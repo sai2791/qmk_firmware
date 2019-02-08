@@ -1,5 +1,4 @@
 #include QMK_KEYBOARD_H
-#include "keymap.h"
 
 #define _NP 0
 #define _BL  1
@@ -108,41 +107,4 @@ uint32_t layer_state_set_user(uint32_t state) {
         break;
     }
   return state;
-}
-
-bool process_record_user(uint16_t keycode, keyrecord_t *record) {
-
-  switch (keycode) {
-    case KC_NUMLOCK:
-      if (record->event.pressed) {
-        if (numlock == false) {
-        numlock_on();
-        numlock = true;
-      }
-      else {
-      numlock_off();
-      numlock = false;
-    }
-  }
-      return false;
-      break;
-    }
-  return true;
-}
-
-void matrix_init_user(void) {
-  numlock_off();
-}
-
-void numlock_on(void)
-{// turn on
-DDRD  |= NUMLOCK_PORT;
-PORTD |= NUMLOCK_PORT;
-}
-
-void numlock_off(void)
-{
-// turn off
-DDRD  &= ~NUMLOCK_PORT;
-PORTD &= ~NUMLOCK_PORT;
 }
