@@ -1,4 +1,5 @@
 #include QMK_KEYBOARD_H
+#include "keymap.h"
 
 #define _NP 0
 #define _BL  1
@@ -43,10 +44,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  */
 
 [_NP] = LAYOUT_numpad_6x4( \
-  KC_KP_0,     KC_KP_1,     KC_KP_4,    KC_KP_7,    KC_NUMLOCK,     KC_ESC,    \
+  KC_KP_0,     KC_KP_1,     KC_KP_4,    KC_KP_7,    KC_NLCK,     KC_ESC,    \
   KC_NO,       KC_KP_2,     KC_KP_5,    KC_KP_8,    KC_KP_SLASH,    KC_TAB,    \
   KC_KP_DOT,   KC_KP_3,     KC_KP_6,    KC_KP_9,    KC_KP_ASTERISK, KC_BSPACE, \
-  KC_KP_ENTER, KC_KP_ENTER, KC_KP_PLUS, KC_PLUS,    KC_KP_MINUS,    TO(_BL)    \
+  KC_NO, KC_KP_ENTER, KC_NO, KC_KP_PLUS,    KC_KP_MINUS,    TO(_BL)    \
 ),
 /* Backlight
  * ,----------------------------------------------------.
@@ -61,9 +62,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  */
 [_BL] = LAYOUT_numpad_6x4( \
   BL_BRTG, _______, _______, _______, _______, KC_NO,   \
-  _______, BL_OFF,  BL_TOGG, BL_ON,   _______, TO(_MP), \
+  KC_NO, BL_OFF,  BL_TOGG, BL_ON,   _______, TO(_MP), \
   _______, _______, _______, _______, _______, KC_NO,   \
-  BL_DEC,  BL_DEC,  BL_INC,  BL_INC,  _______, KC_NO    \
+  KC_NO,  BL_DEC,  KC_NO,  BL_INC,  _______, KC_NO    \
 ),
 /* Macropad
  * ,----------------------------------------------------.
@@ -94,6 +95,8 @@ uint32_t layer_state_set_user(uint32_t state) {
     switch (biton32(state)) {
     case _NP:
         backlight_set(0);
+        DDRD  |= NUMLOCK_PORT;
+        PORTD |= NUMLOCK_PORT;
         break;
     case _BL:
         backlight_set(20);
@@ -107,4 +110,32 @@ uint32_t layer_state_set_user(uint32_t state) {
         break;
     }
   return state;
+}
+
+void led_set_user(uint8_t usb_led) {
+  if (usb_led & (1 << USB_LED_NUM_LOCK)) {
+    // turn on
+    DDRD  |= NUMLOCK_PORT;
+    PORTD |= NUMLOCK_PORT;
+  } else {
+    // turn off
+    DDRD  &= ~NUMLOCK_PORT;
+    PORTD &= ~NUMLOCK_PORT;
+  }
+
+  if (usb_led & (1 << USB_LED_CAPS_LOCK)) {
+    DDRD  |= CAPSLOCK_PORT;
+    PORTD |= CAPSLOCK_PORT;
+  } else {
+    DDRD  &= ~CAPSLOCK_PORT;
+    PORTD &= ~CAPSLOCK_PORT;
+  }
+
+  if (usb_led & (1 << USB_LED_SCROLL_LOCK)) {
+    DDRD  |= SCROLLLOCK_PORT;
+    PORTD |= SCROLLLOCK_PORT;
+  } else {
+    DDRD  &= ~SCROLLLOCK_PORT;
+    PORTD &= ~SCROLLLOCK_PORT;
+  }
 }
