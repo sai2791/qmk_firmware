@@ -2,11 +2,8 @@
 #include "keymap.h"
 
 #define _NP 0
-#define _BL  1
+#define _BL 1
 #define _MP 2
-
-// Port D: digital pins of the AVR chipset
-#define NUMLOCK_PORT    (1 << 0)  // D0
 
 //Tap Dance Config
 enum {
