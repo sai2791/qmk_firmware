@@ -17,6 +17,9 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 This is my personal userspace.
 
+24/02/2019
+Implement on key task switching (Alt-tab in the windows world) Using gui_tab
+
 30/1/2019
 - New kemaps added desk_l and desk_r, should add these to my keymaps
 - maybe move the window moving, and screen moving stuff to a layer
@@ -25,6 +28,7 @@ This is my personal userspace.
 - System wide Mac lock screen Keys (KC_LOCKSCR)
 - System wide Mac Desktop Left key (DESK_L)
 - System wide Mac Desktop Right Key (DESK_R)
+- System wide GUI TAB key (GUI_TAB)
 
 # Shared Keyboards
 - ergodox_ez  Doesnt use the sai2791.c
@@ -36,3 +40,4 @@ This is my personal userspace.
 - fn_action removed
 - Desk_L and Desk_R are not working on the keyboard needs to be investigated, the lock
 screen seems to be working fine.  Checking the code it appears that the define is not in the dev branch
+gui tab stuff mostly taken from https://www.reddit.com/r/olkb/comments/9ncbhu/brainstorming_for_a_onekey_alttab_function_what/

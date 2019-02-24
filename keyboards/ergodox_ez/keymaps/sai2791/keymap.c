@@ -79,7 +79,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                            KC_TRANSPARENT,KC_EXLM,KC_AT,KC_LCBR,KC_RCBR,KC_PIPE,KC_TRANSPARENT,
                                            KC_TRANSPARENT,KC_HASH,KC_DLR,KC_LPRN,KC_RPRN,KC_GRAVE,
                                            KC_TRANSPARENT,KC_PERC,KC_CIRC,KC_LBRACKET,KC_RBRACKET,KC_TILD,KC_TRANSPARENT,
-                                           KC_TRANSPARENT,KC_TRANSPARENT,KC_TRANSPARENT,DESK_L,DESK_R,
+                                           KC_TRANSPARENT,GUI_TAB,KC_TRANSPARENT,DESK_L,DESK_R,
                                                                                 RGB_MOD,KC_TRANSPARENT,
                                                                                 KC_TRANSPARENT,
                                                                                 RGB_VAD,RGB_VAI,KC_TRANSPARENT,
@@ -277,7 +277,32 @@ const macro_t *action_get_macro(keyrecord_t *record, uint8_t id, uint8_t opt)
 };
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+  // persistant variable
+  static bool in_tab = false; // does an GUI-TAB, for windows cycling, without an alt key
+
+  if (keycode != GUI_TAB && in_tab)
+  {
+    // Exit alt tab before treating normally the keycode
+    SEND_STRING(SS_UP(X_LGUI));
+    in_tab = false;
+  }
+
   switch (keycode) {
+      case GUI_TAB:
+        // Macro to handle lower-tab as alt-tab
+        if (record->event.pressed) {
+          if (!in_tab)
+          {
+            SEND_STRING(SS_DOWN(X_LGUI) SS_TAP(X_TAB));
+            in_tab = true;
+          } else {
+            SEND_STRING(SS_TAP(X_TAB));
+            // Do not release Alt here, or it will be impossible to switch more than one window:
+            // alt-tab-tab will be interpreted as alt-tab, then tab
+          }
+        }
+        return false;
+
     // dynamically generate these.
     case EPRM:
       if (record->event.pressed) {

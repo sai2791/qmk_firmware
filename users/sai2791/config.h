@@ -10,6 +10,7 @@
 // taken from a commit by lbussell (#4996) QMK github respository
 #define DESK_L LCTL(KC_LEFT)
 #define DESK_R LCTL(KC_RGHT)
+#define GUI_TAB LGUI(KC_TAB)
 
 // Disable action_get_macro and fn_actions, since we don't use these
 // and it saves on space in the firmware.
