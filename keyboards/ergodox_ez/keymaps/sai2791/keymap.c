@@ -241,6 +241,44 @@ const uint8_t PROGMEM ledmap[][DRIVER_LED_TOTAL][3] = {
 
 };
 
+// stuff that doesnt work
+void matrix_init_user(void) {
+  rgb_matrix_config.raw = eeprom_read_dword(EECONFIG_RGB_MATRIX);
+}
+
+void set_leds_color( int layer) {
+  for (int i = 0; i < DRIVER_LED_TOTAL; i++) {
+    uint8_t val = pgm_read_byte(&ledmap[layer][i][2]);
+    // if the brightness of the led is set to 0 in the map,
+    // the value is not overriden with global controls, allowing the led
+    // to appear turned off
+    HSV hsv = { .h = pgm_read_byte(&ledmap[layer][i][0]), .s = pgm_read_byte(&ledmap[layer][i][1]), .v = (val == 0) ? 0 : rgb_matrix_config.hsv.v};
+    RGB rgb = hsv_to_rgb( hsv );
+    float f = (float)rgb_matrix_config.hsv.v / UINT8_MAX;
+    rgb_matrix_set_color( i, f * rgb.r, f * rgb.g, f * rgb.b );
+    //rgb_matrix_set_color( i, rgb.r, rgb.g, rgb.b );
+  }
+}
+
+void rgb_matrix_indicators_user(void) {
+  uint32_t mode = rgblight_get_mode();
+  if(mode == 1) {
+    uint8_t layer = biton32(layer_state);
+    switch (layer) {
+      case 1:
+        set_leds_color(1);
+        break;
+      case 2:
+        set_leds_color(2);
+        break;
+      case 3:
+        set_leds_color(3);
+        break;
+    }
+  }
+}
+// End of stuff that doesnt work
+
 const macro_t *action_get_macro(keyrecord_t *record, uint8_t id, uint8_t opt)
 {
       switch(id) {
@@ -251,7 +289,7 @@ const macro_t *action_get_macro(keyrecord_t *record, uint8_t id, uint8_t opt)
         break;
       }
     return MACRO_NONE;
-};
+}
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   // persistant variable
@@ -297,13 +335,13 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   return true;
 }
 
-// Runs just one time when the keyboard initializes.
-void matrix_init_user(void) {
- 
- #ifdef RGBLIGHT_COLOR_LAYER_0
-  rgblight_setrgb(RGBLIGHT_COLOR_LAYER_0);
- #endif
-};
+// // Runs just one time when the keyboard initializes.
+// void matrix_init_user(void) {
+//
+//  #ifdef RGBLIGHT_COLOR_LAYER_0
+//   rgblight_setrgb(RGBLIGHT_COLOR_LAYER_0);
+//  #endif
+// };
 
 // Runs whenever there is a layer state change.
 layer_state_t layer_state_set_user(layer_state_t state) {
@@ -376,4 +414,3 @@ layer_state_t layer_state_set_user(layer_state_t state) {
 
   return state;
 };
-
