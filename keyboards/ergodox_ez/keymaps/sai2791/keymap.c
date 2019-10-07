@@ -18,6 +18,7 @@ enum custom_keycodes {
   PLACEHOLDER = SAFE_RANGE, // can always be here
   EPRM,
   RGB_SLD,
+  KC_OPENER,
 };
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
@@ -166,7 +167,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  */
 // World of Warcraft
   [3] = LAYOUT_ergodox(
-                      KC_ESCAPE,KC_F6,KC_F7,KC_RBRACKET,KC_F9,KC_EQUAL,KC_T,
+                      KC_OPENER,KC_F6,KC_F7,KC_RBRACKET,KC_F9,KC_EQUAL,KC_T,
                       KC_3,KC_1,KC_F2,KC_F3,KC_F4,KC_F5,KC_Y,
                       KC_TAB,KC_F1,KC_2,KC_4,KC_5,KC_6,
                       KC_SPACE,KC_TRANSPARENT,KC_TRANSPARENT,KC_TRANSPARENT,KC_8,KC_9,KC_7,
@@ -317,6 +318,16 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
           }
         }
         return false;
+
+   // World of Warcraft KC_OPENER
+   case KC_OPENER:
+   if (record->event.pressed) {
+     // Can't sent these yet as there is no pause  SEND_STRINGS(SS_TAP(X_F2)  SS_CTRL( SS_TAP(X_F2)) );
+     // pause
+     SEND_STRING(SS_DOWN(X_LALT) SS_TAP(X_F2) SS_UP(X_LALT) SS_TAP(X_F9) SS_TAP(X_F1) SS_TAP(X_6) SS_TAP(X_4));
+   }
+   return false;
+   break;
 
     // dynamically generate these.
     case EPRM:
