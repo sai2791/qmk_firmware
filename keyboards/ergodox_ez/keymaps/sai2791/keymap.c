@@ -172,7 +172,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                       KC_OPENER,KC_F6,KC_F7,KC_RBRACKET,KC_F9,KC_EQUAL,KC_T,
                       KC_3,KC_1,KC_F2,KC_F3,KC_F4,KC_F5,KC_Y,
                       KC_TAB,KC_F1,KC_2,KC_4,KC_5,KC_6,
-                      KC_SPACE,KC_TRANSPARENT,KC_TRANSPARENT,KC_TRANSPARENT,KC_8,KC_9,KC_7,
+                      KC_SPACE,KC_WOWESC,KC_TRANSPARENT,KC_TRANSPARENT,KC_8,KC_9,KC_7,
                       LT(4,KC_LCTRL),KC_TRANSPARENT,KC_B,KC_TRANSPARENT,KC_TRANSPARENT,
                                                            KC_F10,KC_F12,
                                                            LALT(KC_F1),
@@ -335,7 +335,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
    if (record->event.pressed) {
      // Shadow meld then switch to FLight form for PVP escape
      //X_LBRC Doesnt work in SS_TAP must use X_LBRACKET
-     SEND_STRING(SS_DOWN(X_LCTRL) SS_TAP(X_F3) SS_UP(X_LCTRL) SS_TAP(X_LBRACKET));
+     SEND_STRING(SS_TAP(X_LBRACKET) SS_DOWN(X_LCTRL) SS_TAP(X_F3) SS_UP(X_LCTRL));
    }
    return false;
    break;
