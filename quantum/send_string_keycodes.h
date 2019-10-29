@@ -49,7 +49,9 @@
 #define X_MINUS 2d
 #define X_EQUAL 2e
 #define X_LBRACKET 2f
+#define X_LBRC 2f
 #define X_RBRACKET 30
+#define X_RBRC 30
 #define X_BSLASH 31
 #define X_NONUS_HASH 32
 #define X_SCOLON 33
