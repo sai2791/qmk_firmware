@@ -19,6 +19,7 @@ enum custom_keycodes {
   EPRM,
   RGB_SLD,
   KC_OPENER,
+  KC_WOWESC
 };
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
@@ -153,7 +154,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |--------+------+------+------+------+------|  Y   |           |      |------+------+------+------+------+--------|
  * |  TAB   |  F1  |   2  |   4  |   5  |   6  |------|           |------|      |      |      |      |      |  C/F3  |
  * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
- * | SPACE  |      |      |      |   8  |   9  |  7   |           |      |      |      |      |      |      |  C/F4  |
+ * | SPACE  | C/F3 |      |  C   |   8  |   9  |  7   |           |      |      |      |      |      |      |  C/F4  |
+ * |        |  F9  |      |      |      |      |      |           |      |      |      |      |      |      |        |
  * `--------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
  *   |4/LCTL|  B   |      |      |      |                                       |      |      |      |      | A/F2 |
  *   `----------------------------------'                                       `----------------------------------'
@@ -325,6 +327,15 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
      // Can't sent these yet as there is no pause  SEND_STRINGS(SS_TAP(X_F2)  SS_CTRL( SS_TAP(X_F2)) );
      // pause
      SEND_STRING(SS_DOWN(X_LALT) SS_TAP(X_F2) SS_UP(X_LALT) SS_TAP(X_F9) SS_TAP(X_F1) SS_TAP(X_6) SS_TAP(X_4));
+   }
+   return false;
+   break;
+
+   case KC_WOWESC:
+   if (record->event.pressed) {
+     // Shadow meld then switch to FLight form for PVP escape
+     //X_LBRC Doesnt work in SS_TAP must use X_LBRACKET
+     SEND_STRING(SS_DOWN(X_LCTRL) SS_TAP(X_F3) SS_UP(X_LCTRL) SS_TAP(X_LBRACKET));
    }
    return false;
    break;
