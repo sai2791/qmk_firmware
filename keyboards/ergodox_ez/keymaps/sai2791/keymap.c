@@ -335,7 +335,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
    if (record->event.pressed) {
      // Shadow meld then switch to FLight form for PVP escape
      //X_LBRC Doesnt work in SS_TAP must use X_LBRACKET
-     SEND_STRING(SS_TAP(X_LBRACKET) SS_DOWN(X_LCTRL) SS_TAP(X_F3) SS_UP(X_LCTRL));
+     SEND_STRING(SS_TAP(X_RBRACKET) SS_DOWN(X_LCTRL) SS_TAP(X_F3) SS_UP(X_LCTRL));
    }
    return false;
    break;
