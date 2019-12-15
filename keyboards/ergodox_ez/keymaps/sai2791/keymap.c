@@ -177,6 +177,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                                            KC_F10,KC_F12,
                                                            LALT(KC_F1),
                                                            KC_F11,KC_F8,KC_0,
+                // The LT(4,KC_LCTRL) allows the user to type when on the wow keyboard by cheating and 
+                // sneaking off to level 4.
 
                       TO(0),KC_TRANSPARENT,KC_TRANSPARENT,KC_TRANSPARENT,KC_TRANSPARENT,KC_TRANSPARENT,LCTL(KC_F1),
                       KC_TRANSPARENT,KC_TRANSPARENT,KC_TRANSPARENT,KC_TRANSPARENT,KC_TRANSPARENT,KC_EQUAL,LCTL(KC_F2),
