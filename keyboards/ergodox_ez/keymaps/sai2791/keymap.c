@@ -197,14 +197,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   * | Del    |   Q  |   W  |   E  |   R  |   T  |  L1  |           |  L0  |   Y  |   U  |   I  |   O  |   P  |   \    |
   * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
   * | BkSp   |   A  |   S  |   D  |   F  |   G  |------|           |------|   H  |   J  |   K  |   L  |; / L2|  LGui  |
-  * |           +------+Shift +CTRL+  ALT+------|       |           |        | ALT+Ctrl+Shift+------+------+--------|
+  * |        +------+Shift +CTRL+  ALT   +------|       |          |      | ALT  +Ctrl  +Shift +------+------+--------|
   * |--------+------+------+------+------+------| Hyper|           | Meh  |------+------+------+------+------+--------|
   * | LShift |Z/Ctrl|   X  |   C  |   V  |   B  |      |           |      |   N  |   M  |   ,  |   .  |//Ctrl| RShift |
   * `--------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
   *   |Grv/L1|  '"  |AltShf| Left | Right|                                       |  Up  | Down |   [  |   ]  | ~L1  |
   *   `----------------------------------'                                       `----------------------------------'
   *                                        ,-------------.       ,---------------.
-  *                                        | App  | LGui |       | Alt  |Ctrl/Esc|
+  *                                        |Alt/Scr| LGui|       | Ctrl |  Esc   |
   *                                 ,------|------|------|       |------+--------+------.
   *                                 |      |      | Home |       | PgUp |        |      |
   *                                 | Space|Backsp|------|       |------|  Tab   |Enter |
@@ -227,7 +227,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                        KC_H,LALT_T(KC_J),LCTL_T(KC_K),LSFT_T(KC_L),LT(2,KC_SCOLON),GUI_T(KC_QUOTE),
                        KC_MEH,KC_N,KC_M,KC_COMMA,KC_DOT,RCTL_T(KC_SLASH),KC_RSHIFT,
                        KC_UP,KC_DOWN,KC_LBRACKET,KC_RBRACKET,MO(1),
-                                                         KC_LCTRL,CTL_T(KC_ESCAPE),
+                                                         KC_LCTRL,KC_ESCAPE,
                                                          KC_PGUP,
                                                          KC_PGDOWN,KC_TAB,KC_ENTER),
 
