@@ -24,47 +24,49 @@ enum custom_keycodes {
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 /* Keymap 0: Basic layer
- *
- * ,--------------------------------------------------.           ,--------------------------------------------------.
- * |   =    |   1  |   2  |   3  |   4  |   5  | LEFT |           | TO(3)|   6  |   7  |   8  |   9  |   0  |   -    |
- * |--------+------+------+------+------+-------------|           |------+------+------+------+------+------+--------|
- * | Del    |   Q  |   W  |   E  |   R  |   T  |  L1  |           |  L4  |   Y  |   U  |   I  |   O  |   P  |   \    |
- * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
- * | BkSp   |   A  |   S  |   D  |   F  |   G  |------|           |------|   H  |   J  |   K  |   L  |; / L2|  LGui  |
- * |--------+------+------+------+------+------| Hyper|           | Meh  |------+------+------+------+------+--------|
- * | LShift |Z/Ctrl|   X  |   C  |   V  |   B  |      |           |      |   N  |   M  |   ,  |   .  |//Ctrl| RShift |
- * `--------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
- *   |Grv/L1|  '"  |AltShf| Left | Right|                                       |  Up  | Down |   [  |   ]  | ~L1  |
- *   `----------------------------------'                                       `----------------------------------'
- *                                        ,-------------.       ,---------------.
- *                                        | Alt  | LGui |       | Alt  |Ctrl/Esc|
- *                                        | SCap |      |       |      |        |
- *                                 ,------|------|------|       |------+--------+------.
- *                                 |      |      | Home |       | PgUp |        |      |
- *                                 | Space|Backsp|------|       |------|  Tab   |Enter |
- *                                 |      |ace   | End  |       | PgDn |        |      |
- *                                 `--------------------'       `----------------------'
- */
+  *
+  * ,--------------------------------------------------.           ,--------------------------------------------------.
+  * |   =    |   1  |   2  |   3  |   4  |   5  | LEFT |           | TO(3)|   6  |   7  |   8  |   9  |   0  |   -    |
+  * |--------+------+------+------+------+-------------|           |------+------+------+------+------+------+--------|
+  * | Del    |   Q  |   W  |   E  |   R  |   T  |  L1  |           |  L0  |   Y  |   U  |   I  |   O  |   P  |   \    |
+  * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
+  * | BkSp   |   A  |   S  |   D  |   F  |   G  |------|           |------|   H  |   J  |   K  |   L  |; / L2|  LGui  |
+  * |        +------+Shift +CTRL+  ALT   +------|      |           |      | ALT  +Ctrl  +Shift +------+------+--------|
+  * |--------+------+------+------+------+------| Hyper|           | Meh  |------+------+------+------+------+--------|
+  * | LShift |Z/Ctrl|   X  |   C  |   V  |   B  |      |           |      |   N  |   M  |   ,  |   .  |//Ctrl| RShift |
+  * `--------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
+  *   |Grv/L1|  '"  |AltShf| Left | Right|                                       |  Up  | Down |   [  |   ]  | ~L1  |
+  *   `----------------------------------'                                       `----------------------------------'
+  *                                        ,-------------.       ,---------------.
+  *                                        |Alt/Scr| LGui|       | Ctrl |  Esc   |
+  *                                 ,------|------|------|       |------+--------+------.
+  *                                 |      |      | Home |       | PgUp |        |      |
+  *                                 | Space|Backsp|------|       |------|  Tab   |Enter |
+  *                                 |      |ace   | End  |       | PgDn |        |      |
+  *                                 `--------------------'       `----------------------'
+  */
 // If it accepts an argument (i.e, is a function), it doesn't need KC_.
 // Otherwise, it needs KC_*
-  [0] = LAYOUT_ergodox(
-                      KC_EQUAL,KC_1,KC_2,KC_3,KC_4,KC_5,KC_LEFT,
-                      KC_DELETE,KC_Q,KC_W,KC_E,KC_R,KC_T,TG(1),
-                      KC_BSPACE,KC_A,KC_S,KC_D,KC_F,KC_G,
-                      KC_LSHIFT,CTL_T(KC_Z),KC_X,KC_C,KC_V,KC_B,KC_HYPR,
-                      LT(1,KC_GRAVE),KC_QUOTE,LALT(KC_LSHIFT),KC_LEFT,KC_RIGHT,
-                                                      TD(TD_ALT_SCRCAP),KC_LGUI,
-                                                      KC_HOME,
-                                                      KC_SPACE,KC_BSPACE,KC_END,
 
-                      TO(3),KC_6,KC_7,KC_8,KC_9,KC_0,KC_MINUS,
-                      TO(4),KC_Y,KC_U,KC_I,KC_O,KC_P,KC_BSLASH,
-                      KC_H,KC_J,KC_K,KC_L,LT(2,KC_SCOLON),GUI_T(KC_QUOTE),
-                      KC_MEH,KC_N,KC_M,KC_COMMA,KC_DOT,RCTL_T(KC_SLASH),KC_RSHIFT,
-                      KC_UP,KC_DOWN,KC_LBRACKET,KC_RBRACKET,MO(1),
-                                                        KC_LCTRL,CTL_T(KC_ESCAPE),
-                                                        KC_PGUP,
-                                                        KC_PGDOWN,KC_TAB,KC_ENTER),
+  [0] = LAYOUT_ergodox(
+                       KC_EQUAL,KC_1,KC_2,KC_3,KC_4,KC_5,KC_LEFT,
+                       KC_DELETE,KC_Q,KC_W,KC_E,KC_R,KC_T,TG(1),
+                       KC_BSPACE,KC_A,LSFT_T(KC_S),LCTL_T(KC_D),LALT_T(KC_F),KC_G,
+                       KC_LSHIFT,CTL_T(KC_Z),KC_X,KC_C,KC_V,KC_B,KC_HYPR,
+                       LT(1,KC_GRAVE),KC_QUOTE,LALT(KC_LSHIFT),KC_LEFT,KC_RIGHT,
+                                                       TD(TD_ALT_SCRCAP),KC_LGUI,
+                                                       KC_HOME,
+                                                       KC_SPACE,KC_BSPACE,KC_END,
+
+                       TO(3),KC_6,KC_7,KC_8,KC_9,KC_0,KC_MINUS,
+                       TO(0),KC_Y,KC_U,KC_I,KC_O,KC_P,KC_BSLASH,
+                       KC_H,LALT_T(KC_J),LCTL_T(KC_K),LSFT_T(KC_L),LT(2,KC_SCOLON),GUI_T(KC_QUOTE),
+                       KC_MEH,KC_N,KC_M,KC_COMMA,KC_DOT,RCTL_T(KC_SLASH),KC_RSHIFT,
+                       KC_UP,KC_DOWN,KC_LBRACKET,KC_RBRACKET,MO(1),
+                                                         KC_LCTRL,KC_ESCAPE,
+                                                         KC_PGUP,
+                                                         KC_PGDOWN,KC_TAB,KC_ENTER),
+
 /* Keymap 1: Symbol Layer
  *
  * ,--------------------------------------------------.           ,--------------------------------------------------.
@@ -211,7 +213,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   *                                 |      |ace   | End  |       | PgDn |        |      |
   *                                 `--------------------'       `----------------------'
   */
- // MEDIA AND MOUSE
+ // Keyboard Enhancements In test
    [4] = LAYOUT_ergodox(
                        KC_EQUAL,KC_1,KC_2,KC_3,KC_4,KC_5,KC_LEFT,
                        KC_DELETE,KC_Q,KC_W,KC_E,KC_R,KC_T,TG(1),
