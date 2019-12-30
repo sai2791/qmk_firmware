@@ -9,3 +9,4 @@ RGBLIGHT_ANIMATION = no  ## No difference
 UNICODE_ENABLE   = no ## saves 598 buyes
 #SLEEP_LED_ENABLE = no ## No Difference
 #API_SYSEX_ENABLE = no ## uses 3274 bytes
+DYNAMIC_MACRO_ENABLE = yes

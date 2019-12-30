@@ -137,7 +137,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                       KC_TRANSPARENT,KC_TRANSPARENT,KC_TRANSPARENT,KC_MS_BTN1,KC_MS_BTN2,
                                                            KC_TRANSPARENT,KC_TRANSPARENT,
                                                            KC_TRANSPARENT,
-                                                           KC_TRANSPARENT,KC_TRANSPARENT,KC_TRANSPARENT,
+                                                           DYN_REC_START1,DYN_REC_START2,DYN_REC_STOP,
 
                       KC_TRANSPARENT,KC_TRANSPARENT,KC_TRANSPARENT,KC_TRANSPARENT,KC_TRANSPARENT,KC_TRANSPARENT,MT(MOD_HYPR, KC_RIGHT),
                       KC_TRANSPARENT,KC_TRANSPARENT,KC_TRANSPARENT,KC_TRANSPARENT,KC_TRANSPARENT,KC_MEDIA_PLAY_PAUSE,MT(MOD_MEH, KC_RIGHT),
@@ -146,7 +146,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                       KC_AUDIO_VOL_UP,KC_AUDIO_VOL_DOWN,KC_AUDIO_MUTE,KC_TRANSPARENT,KC_TRANSPARENT,
                                                            KC_TRANSPARENT,KC_TRANSPARENT,
                                                            KC_TRANSPARENT,
-                                                           KC_TRANSPARENT,KC_TRANSPARENT,KC_WWW_BACK),
+                                                           KC_TRANSPARENT,DYN_MACRO_PLAY1,DYN_MACRO_PLAY2),
 /* Keymap 3: World of Warcraft
  *
  * ,--------------------------------------------------.           ,--------------------------------------------------.
@@ -179,7 +179,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                                            KC_F10,KC_F12,
                                                            LALT(KC_F1),
                                                            KC_F11,KC_F8,KC_0,
-                // The LT(4,KC_LCTRL) allows the user to type when on the wow keyboard by cheating and 
+                // The LT(4,KC_LCTRL) allows the user to type when on the wow keyboard by cheating and
                 // sneaking off to level 4.
 
                       TO(0),KC_TRANSPARENT,KC_TRANSPARENT,KC_TRANSPARENT,KC_TRANSPARENT,KC_TRANSPARENT,LCTL(KC_F1),
