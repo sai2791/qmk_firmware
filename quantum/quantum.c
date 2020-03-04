@@ -689,7 +689,7 @@ void matrix_scan_quantum() {
 // Functions for spitting out values
 //
 
-void send_dword(uint32_t number) {
+void send_dword(uint32_t number) {  // this might not actually work
     uint16_t word = (number >> 16);
     send_word(word);
     send_word(number & 0xFFFFUL);
