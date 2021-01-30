@@ -49,7 +49,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 // Otherwise, it needs KC_*
 
   [0] = LAYOUT_ergodox(
-                       KC_EQUAL,KC_1,KC_2,KC_3,KC_4,KC_5,KC_LEFT,
+                       KC_EQUAL,KC_1,KC_2,KC_3,KC_4,KC_5,TO(4),
                        KC_DELETE,KC_Q,KC_W,KC_E,KC_R,KC_T,TG(1),
                        KC_BSPACE,KC_A,LSFT_T(KC_S),LCTL_T(KC_D),LALT_T(KC_F),KC_G,
                        KC_LSHIFT,CTL_T(KC_Z),KC_X,KC_C,KC_V,KC_B,KC_HYPR,
@@ -159,7 +159,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * | SPACE  | C/F3 |      | Alt/A|   8  |   9  |  7   |           |      |      |      |      |      |      |  C/F4  |
  * |        |  F9  |      |      |      |      |      |           |      |      |      |      |      |      |        |
  * `--------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
- *   |4/LCTL|  B   |  C   |      |      |                                       |      |      |      |      | A/F2 |
+ *   | LCTL |  B   |  C   |      |      |                                       |      |      |      |      | A/F2 |
  *   `----------------------------------'                                       `----------------------------------'
  *                                        ,-------------.       ,-------------.
  *                                        | F10  | F12  |       |      |      |
@@ -175,12 +175,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                       KC_3,KC_1,KC_F2,KC_F3,KC_F4,KC_F5,KC_Y,
                       KC_TAB,KC_F1,KC_2,KC_4,KC_5,KC_6,
                       KC_SPACE,KC_WOWESC,KC_TRANSPARENT,LALT(KC_A),KC_8,KC_9,KC_7,
-                      LT(4,KC_LCTRL),KC_B,KC_C,KC_TRANSPARENT,KC_TRANSPARENT,
+                      KC_LCTRL,KC_B,KC_C,KC_TRANSPARENT,KC_TRANSPARENT,
                                                            KC_F10,KC_F12,
                                                            LALT(KC_F1),
                                                            KC_F11,KC_F8,KC_0,
-                // The LT(4,KC_LCTRL) allows the user to type when on the wow keyboard by cheating and 
-                // sneaking off to level 4.
 
                       TO(0),KC_TRANSPARENT,KC_TRANSPARENT,KC_TRANSPARENT,KC_TRANSPARENT,KC_TRANSPARENT,LCTL(KC_F1),
                       KC_TRANSPARENT,KC_TRANSPARENT,KC_TRANSPARENT,KC_TRANSPARENT,KC_TRANSPARENT,KC_EQUAL,LCTL(KC_F2),
@@ -217,7 +215,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    [4] = LAYOUT_ergodox(
                        KC_EQUAL,KC_1,KC_2,KC_3,KC_4,KC_5,KC_LEFT,
                        KC_DELETE,KC_Q,KC_W,KC_E,KC_R,KC_T,TG(1),
-                       KC_BSPACE,KC_A,LSFT_T(KC_S),LCTL_T(KC_D),LALT_T(KC_F),KC_G,
+                       KC_BSPACE,KC_A,KC_S,KC_D,KC_F,KC_G,
                        KC_LSHIFT,CTL_T(KC_Z),KC_X,KC_C,KC_V,KC_B,KC_HYPR,
                        LT(1,KC_GRAVE),KC_QUOTE,LALT(KC_LSHIFT),KC_LEFT,KC_RIGHT,
                                                        TD(TD_ALT_SCRCAP),KC_LGUI,
@@ -226,7 +224,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
                        TO(3),KC_6,KC_7,KC_8,KC_9,KC_0,KC_MINUS,
                        TO(0),KC_Y,KC_U,KC_I,KC_O,KC_P,KC_BSLASH,
-                       KC_H,LALT_T(KC_J),LCTL_T(KC_K),LSFT_T(KC_L),LT(2,KC_SCOLON),GUI_T(KC_QUOTE),
+                       KC_H,KC_J,KC_K,KC_L,LT(2,KC_SCOLON),GUI_T(KC_QUOTE),
                        KC_MEH,KC_N,KC_M,KC_COMMA,KC_DOT,RCTL_T(KC_SLASH),KC_RSHIFT,
                        KC_UP,KC_DOWN,KC_LBRACKET,KC_RBRACKET,MO(1),
                                                          KC_LCTRL,KC_ESCAPE,
