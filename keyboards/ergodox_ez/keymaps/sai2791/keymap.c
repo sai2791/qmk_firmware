@@ -8,6 +8,16 @@ enum {
   TD_ALT_SCRCAP = 0,
 };
 
+// Left-hand home row mods
+#define HOME_S LSFT_T(KC_S)
+#define HOME_D LCTL_T(KC_D)
+#define HOME_F LALT_T(KC_F)
+
+// Right-hand home row mods
+#define HOME_J LALT_T(KC_J)
+#define HOME_K RCTL_T(KC_K)
+#define HOME_L RSFT_T(KC_L)
+
 qk_tap_dance_action_t tap_dance_actions[] = {
   //Tap - Press ALT or press twice for Screen Capture
   [TD_ALT_SCRCAP] = ACTION_TAP_DANCE_DOUBLE(KC_LALT,KC_SCRCAP)
@@ -51,7 +61,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [0] = LAYOUT_ergodox(
                        KC_EQUAL,KC_1,KC_2,KC_3,KC_4,KC_5,TO(4),
                        KC_DELETE,KC_Q,KC_W,KC_E,KC_R,KC_T,TG(1),
-                       KC_BSPACE,KC_A,LSFT_T(KC_S),LCTL_T(KC_D),LALT_T(KC_F),KC_G,
+                       KC_BSPACE,KC_A,HOME_S,HOME_D,HOME_F,KC_G,
                        KC_LSHIFT,CTL_T(KC_Z),KC_X,KC_C,KC_V,KC_B,KC_HYPR,
                        LT(1,KC_GRAVE),KC_QUOTE,LALT(KC_LSHIFT),KC_LEFT,KC_RIGHT,
                                                        TD(TD_ALT_SCRCAP),KC_LGUI,
@@ -60,7 +70,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
                        TO(3),KC_6,KC_7,KC_8,KC_9,KC_0,KC_MINUS,
                        TO(0),KC_Y,KC_U,KC_I,KC_O,KC_P,KC_BSLASH,
-                       KC_H,LALT_T(KC_J),LCTL_T(KC_K),LSFT_T(KC_L),LT(2,KC_SCOLON),GUI_T(KC_QUOTE),
+                       KC_H,HOME_J,HOME_K,HOME_L,LT(2,KC_SCOLON),GUI_T(KC_QUOTE),
                        KC_MEH,KC_N,KC_M,KC_COMMA,KC_DOT,RCTL_T(KC_SLASH),KC_RSHIFT,
                        KC_UP,KC_DOWN,KC_LBRACKET,KC_RBRACKET,MO(1),
                                                          KC_LCTRL,KC_ESCAPE,
