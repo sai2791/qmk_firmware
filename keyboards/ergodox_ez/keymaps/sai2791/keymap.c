@@ -400,18 +400,21 @@ layer_state_t layer_state_set_user(layer_state_t state) {
         #ifdef RGBLIGHT_COLOR_LAYER_1
           rgblight_setrgb(RGBLIGHT_COLOR_LAYER_1);
         #endif
+        set_leds_color(1);
         break;
       case 2:
         ergodox_right_led_2_on();
         #ifdef RGBLIGHT_COLOR_LAYER_2
           rgblight_setrgb(RGBLIGHT_COLOR_LAYER_2);
         #endif
+        set_leds_color(2);
         break;
       case 3:
         ergodox_right_led_3_on();
         #ifdef RGBLIGHT_COLOR_LAYER_3
           rgblight_setrgb(RGBLIGHT_COLOR_LAYER_3);
         #endif
+        set_leds_color(3);
         break;
       case 4:
         ergodox_right_led_1_on();
